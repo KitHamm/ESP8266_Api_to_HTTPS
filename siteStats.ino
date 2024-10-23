@@ -12,8 +12,8 @@ u8g2(U8G2_R0,/*clock=*/14,/*data=*/12, U8X8_PIN_NONE);
 JsonDocument doc;
 
 // Replace with your network credentials
-const char* ssid = "Pico_4_Dedicated_Wireless";
-const char* password = "20730024";
+const char* ssid = "<SSID>";
+const char* password = "<PASSWORD>";
 int messageCount = 0;
 int pageViews = 0;
 int httpCode = 0;
@@ -59,7 +59,7 @@ void loop() {
     if (reFetch == true) {
       //Initializing an HTTPS communication using the secure client
       Serial.print("[HTTPS] begin...\n");
-      if (https.begin(*client, "https://kitmakesthings.co.uk/api/arduino")) {  // HTTPS
+      if (https.begin(*client, <API ENDPOINT>)) {  // HTTPS
 
         Serial.print("[HTTPS] GET...\n");
         if (fetchingPrinted == false) {
@@ -67,7 +67,7 @@ void loop() {
         }
         // start connection and send HTTP header
         https.addHeader("Content-Type", "Content-Type: application/json");
-        httpCode = https.POST("{\"identifier\":\"0021456\"}");
+        httpCode = https.POST(<"JSON TO POST">);
         // httpCode will be negative on error
         if (httpCode > 0) {
           // HTTP header has been send and Server response header has been handled
